@@ -1,0 +1,60 @@
+﻿<aside class="left-sidebar">
+    <ul id="slide-out" class="sidenav">
+
+        <li>
+            <ul class="collapsible p-t-30">
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>
+                        <a href="/" class="collapsible-header">
+                            <i class="material-icons">home</i><span class="hide-menu">Anasayfa</span>
+                        </a>
+                    </li>
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                {
+                    <li>
+                        <a href="/Dashboard" class="collapsible-header">
+                            <i class="material-icons">
+                                person
+                            </i><span class="hide-menu">Sample Menu</span>
+                        </a>
+                    </li>
+                }
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>
+                        <a href="/AdminRole" class="collapsible-header">
+                            <i class="material-icons">face</i>
+                            <span class="hide-menu">Kullanıcılar</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/ViewLogs" class="collapsible-header">
+                            <i class="material-icons">archive</i>
+                            <span class="hide-menu">Log Kayıtları</span>
+                        </a>
+                    </li>
+                }
+                <!--   <li>
+                    <a class="collapsible-header has-arrow"><i class="material-icons">clear_all</i><span class="hide-menu">Şifre Sıfırlama</span></a>
+                    <div class="collapsible-body">
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <a href="/SifreSifirlama">
+                                    <i class="material-icons">lock_outline</i>
+                                    <span class="hide-menu">Şifre Sıfırlamaları</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+                </ul>
+                </li>-->
+            </ul>
+        </li>
+    </ul>
+</aside>

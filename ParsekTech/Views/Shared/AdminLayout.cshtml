@@ -1,0 +1,277 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Admin/assets/images/iemlogo.png">
+    <title>Bilgi Teknolojileri ve Haberleşme Şube Müdürlüğü</title>
+    <link href="~/Admin/dist/css/style.css" rel="stylesheet">
+    <link href="~/Admin/assets/libs/summernote/dist/summernote-bs4.css" rel="stylesheet" />
+    <link href="~/Admin/assets/libs/summernote/dist/summernote-lite.css" rel="stylesheet" />
+    <link href="~/Admin/assets/libs/summernote/dist/summernote.css" rel="stylesheet" />
+    <link href="~/Admin/assets/libs/pagedlist.css" rel="stylesheet" />
+    <link href="~/Admin/assets/libs/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Admin/assets/libs/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css">
+    <link href="~/Admin/dist/css/pages/data-table.css" rel="stylesheet">
+    <link href="~/Admin/assets/extra-libs/prism/prism.css" rel="stylesheet">
+    <link href="~/Admin/dist/css/pages/user-card.css" rel="stylesheet">
+    <link href="~/Admin/assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Admin/assets/libs/pickadate/lib/themes/default.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/assets/libs/pickadate/lib/themes/default.date.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/assets/libs/pickadate/lib/themes/default.time.css">
+    <link href="~/Admin/dist/css/pages/data-table.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="~/Admin/assets/libs/jsgrid/dist/jsgrid.min.css">
+    <link type="text/css" rel="stylesheet" href="~/Admin/assets/libs/jsgrid/dist/jsgrid-theme.min.css">
+    <link href="~/Admin/assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
+    <link href="~/Admin/dist/css/pages/email.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    /* Hide scroll bar on desktop */
+/* Responsive table */
+.table-responsive {
+  overflow-x: auto;
+}
+
+/* Styling for small screens */
+@@media (max-width: 600px) {
+  .table-responsive {
+    max-height: 400px; /* Adjust the height as needed */
+  }
+}
+
+</style>
+</head>
+
+<body>
+    <div class="main-wrapper" id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <div class="preloader">
+            <div class="loader">
+                <div class="loader__figure"></div>
+                <p class="loader__label">Bilgi Teknolojileri ve Haberleşme Şube Müdürlüğü</p>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        @await Html.PartialAsync("~/Views/Default/AdminHeader.cshtml")
+
+        <!-- ============================================================== -->
+        <!-- Sidebar scss in sidebar.scss -->
+        <!-- ============================================================== -->
+        @await Html.PartialAsync("~/Views/Default/AdminSidebar.cshtml")
+        <!-- ============================================================== -->
+        <!-- Sidebar scss in sidebar.scss -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper scss in scafholding.scss -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Title and breadcrumb -->
+            <!-- ============================================================== -->
+            @RenderBody()
+            <!-- ============================================================== -->
+            <!-- Container fluid scss in scafholding.scss -->
+            <!-- ============================================================== -->
+            <footer class="center-align m-b-30">Bu site <b>Bilgi Teknolojileri ve Haberleşme Şube Müdürlüğü</b> tarafından yapılmıştır</footer>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Page wrapper scss in scafholding.scss -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right Sidebar -->
+        <!-- ============================================================== -->
+        <!--  <a href="#" data-target="right-slide-out" class="sidenav-trigger right-side-toggle btn-floating btn-large waves-effect waves-light red"><i class="material-icons">settings</i></a>-->
+        @* <a href="#" data-target="right-slide-out" class="sidenav-trigger right-side-toggle btn-floating btn-large waves-effect waves-light red"><i class="material-icons">settings</i></a>
+        <aside class="right-sidebar">
+        <!-- Right Sidebar -->
+        <ul id="right-slide-out" class="sidenav right-sidenav p-t-10">
+        <li>
+        <div class="row">
+        <div class="col s12">
+        <!-- Tabs -->
+        <ul class="tabs">
+        <li class="tab col s4"><a href="#settings" class="active"><span class="material-icons">build</span></a></li>
+
+        </ul>
+        <!-- Tabs -->
+        </div>
+        <!-- Setting -->
+        <div id="settings" class="col s12">
+        <div class="m-t-10 p-10 b-b">
+        <h6 class="font-medium">Ne yapmak istersiniz?</h6>
+        <ul class="m-t-15">
+        <li class="m-b-10">
+        <label>
+        <a href="/SifreSifirlama/SifreSifirla" class="waves-effect waves-light btn indigo"><i class="material-icons right">add</i>Yeni Veri Ekle</a>
+
+        </label>
+        </li>
+
+        </ul>
+        </div>
+
+        </div>
+
+        </div>
+        </li>
+        </ul>
+        </aside>*@
+        <div class="chat-windows"></div>
+        <!-- ============================================================== -->
+        <!-- Right Sidebar -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- All Required js -->
+    <!-- ============================================================== -->
+
+    <script src="~/Admin/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/Admin/dist/js/materialize.min.js"></script>
+    <script src="~/Admin/assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- Apps -->
+    <!-- ============================================================== -->
+    <script src="~/Admin/dist/js/app.js"></script>
+    <script src="~/Admin/dist/js/app.init.js"></script>
+    <script src="~/Admin/dist/js/app-style-switcher.js"></script>
+    <!-- ============================================================== -->
+    <!-- Custom js -->
+    <!-- ============================================================== -->
+    <script src="~/Admin/dist/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugin js -->
+    <!-- ============================================================== -->
+    <script src="~/Admin/assets/libs/summernote/dist/summernote-bs4.min.js"></script>
+    <script src="~/Admin/assets/libs/summernote/dist/summernote-lite.js"></script>
+    <script src="~/Admin/assets/libs/summernote/dist/summernote.min.js"></script>
+    <script src="~/Admin/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="~/Admin/assets/libs/sweetalert2/dist/sweetalert2.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugin js -->
+    <!-- ============================================================== -->
+    <script src="~/Admin/assets/libs/moment/moment.js"></script>
+    <script src="~/Admin/assets/libs/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker-custom.js"></script>
+
+    <!-- Script -->
+    <script src="~/Admin/assets/extra-libs/DataTables/datatables.min.js"></script>
+    @*    <script src="~/Admin/assets/libs/buttons.flash.min.js"></script>*@
+    <script src="~/Admin/assets/libs/buttons.html5.min.js"></script>
+    <script src="~/Admin/assets/libs/buttons.print.min.js"></script>
+    <script src="~/Admin/assets/libs/datatables.buttons.min.js"></script>
+    <script src="~/Admin/assets/libs/jszip.min.js"></script>
+    <script src="~/admin/assets/libs/pdfmake.min.js"></script>
+    <script src="~/Admin/assets/libs/vfs_fonts.js"></script>
+    <script src="~/Admin/assets/extra-libs/prism/prism.js"></script>
+    <script src="~/Admin/assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+    <script src="~/Admin/assets/libs/magnific-popup/meg.init.js"></script>
+    <script src="~/Admin/assets/libs/xlsx.full.min.js"></script>
+    <script src="~/Admin/assets/libs/chart.js/dist/Chart.min.js"></script>
+    <script src="~/Admin/assets/libs/pickadate/lib/compressed/picker.js"></script>
+    <script src="~/Admin/assets/libs/pickadate/lib/compressed/picker.date.js"></script>
+    <script src="~/Admin/assets/libs/pickadate/lib/compressed/picker.time.js"></script>
+    <script src="~/Admin/assets/libs/pickadate/lib/compressed/legacy.js"></script>
+    <script src="~/Admin/assets/libs/moment/moment.js"></script>
+    <script src="~/Admin/assets/libs/daterangepicker/daterangepicker.js"></script>
+    <script src="~/Admin/dist/js/pages/forms/datetimepicker/datetimepicker.init.js"></script>
+    <script src="~/Admin/assets/extra-libs/jquery-datatables-editable/jquery.dataTables.js"></script>
+    <script src="~/Admin/assets/extra-libs/tiny-editable/mindmup-editabletable.js"></script>
+    <script src="~/Admin/assets/extra-libs/tiny-editable/numeric-input-example.js"></script>
+    <script src="~/Admin/assets/libs/jsgrid/dist/db.js"></script>
+    <script type="text/javascript" src="~/Admin/assets/libs/jsgrid/dist/jsgrid.min.js"></script>
+    <script src="~/Admin/dist/js/pages/jsgrid/jsgrid-init.js"></script>
+    <script src="~/Admin/assets/libs/toastr/build/toastr.min.js"></script>
+    <script src="~/Admin/assets/extra-libs/toastr/toastr-init.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote({
+                toolbar: true
+            });
+            $('#AddEdit').modal('@ViewBag.Edit');
+            $('.materialboxed').materialbox();
+        });
+
+        $('.delete').on('click', function (e) {
+            e.preventDefault();
+            var self = $(this);
+            console.log(self.data('title'));
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Bu işlem geri alınamaz!",
+                icon: 'warning',
+                popup: 'swal2-show',
+                backdrop: 'swal2-backdrop-show',
+                showCancelButton: true,
+                confirmButtonColor: '#E06B55',
+                cancelButtonColor: '#999999',
+                confirmButtonText: 'Evet, devam et!',
+                cancelButtonText: "İptal Et"
+
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    location.href = self.attr('href');
+                }
+            })
+
+        })
+        // MAterial Date picker
+        $('#mdate').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+        $('#mdate2').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+        $('#mdate3').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+        $('#mdate4').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+        $('#mdate5').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+        $('#mdate6').bootstrapMaterialDatePicker({ weekStart: 0, time: true });
+
+        $('#timepicker').bootstrapMaterialDatePicker({ format: 'HH:mm', time: true, date: false });
+        $('#date-format').bootstrapMaterialDatePicker({ format: 'DD.MM.YYYY HH:mm' });
+
+        $('#min-date').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY HH:mm', minDate: new Date() });
+        $('#date-tr').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY HH:mm', lang: 'tr', weekStart: 1, cancelText: 'Çıkış' });
+        $('#date-end').bootstrapMaterialDatePicker({ weekStart: 0 });
+        $('#date-start').bootstrapMaterialDatePicker({ weekStart: 0 }).on('change', function (e, date) {
+            $('#date-end').bootstrapMaterialDatePicker('setMinDate', date);
+        });
+        //=============================================//
+        //    File export                              //
+        //=============================================//
+        $('#file_export').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+
+        $('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
+        $('#editable-datatable').editableTableWidget().numericInputExample().find('td:first').focus();
+        $(function () {
+            $('#editable-datatable').DataTable();
+        });
+            $(function () {
+            toastr.options = {
+                closeButton: false,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                timeOut: 3000 // Adjust the duration as needed
+            };
+        });
+    </script>
+       @RenderSection("Scripts", required: false)
+
+</body>
+</html>

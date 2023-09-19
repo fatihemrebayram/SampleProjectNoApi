@@ -1,0 +1,155 @@
+﻿@using ModelsLayer.Models
+@model UserSignUpViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Admin/assets/images/iemlogo.png">
+    <title>Bilgi Teknolojileri ve Haberleşme Şube Müdürlüğü</title>
+    <link href="~/Admin/dist/css/style.css" rel="stylesheet">
+    <!-- This page CSS -->
+    <link href="~/Admin/dist/css/pages/authentication.css" rel="stylesheet">
+    <!-- This page CSS -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <div class="preloader">
+            <div class="loader">
+                <div class="loader__figure"></div>
+                <p class="loader__label">Bilgi Teknolojileri ve Haberleşme Şube Müdürlüğü</p>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Login box.scss -->
+        <!-- ============================================================== -->
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(/Admin/assets/images/big/auth-bg.jpg) no-repeat center center;">
+            <div class="auth-box">
+                <div id="loginform">
+                    <div class="logo">
+                        <span class="db"><img src="~/Admin/assets/images/iemlogo.png" style="width:10%" alt="logo" /></span>
+                        <h5 class="font-medium m-b-20">Sisteme üye olun</h5>
+                    </div>
+                    <!-- Form -->
+                    <div class="row">
+                        <form class="col s12" asp-action="Index">
+                            <!-- Name -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="name" type="text" class="validate" required asp-for="@Model.NameSurname">
+                                    <label for="name">Adı Soyadı</label>
+                                    <span style="color:darkred" asp-validation-for="@Model.NameSurname"></span>
+                                </div>
+                            </div>
+                            <!-- UserName -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="name" type="text" class="validate" required asp-for="@Model.UserName">
+                                    <label for="name">Kullanıcı Adı</label>
+                                    <span style="color:darkred" asp-validation-for="@Model.UserName"></span>
+
+                                </div>
+                            </div>
+
+                            <!-- email -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="email" type="email" class="validate" required asp-for="@Model.Mail">
+                                    <label for="email">E-Posta</label>
+                                    <span style="color:darkred" asp-validation-for="@Model.Mail"></span>
+
+                                </div>
+                            </div>
+                            <!-- pwd -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="password" type="password" class="validate" required asp-for="@Model.Password">
+                                    <label for="password">Şifre</label>
+                                    <span style="color:darkred" asp-validation-for="@Model.Password"></span>
+
+                                </div>
+                            </div>
+                            <!-- pwd -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="cpassword" type="password" class="validate" required asp-for="@Model.ConfirmPassword">
+                                    <label for="cpassword">Şifre Onay</label>
+                                    <span style="color:darkred" asp-validation-for="@Model.ConfirmPassword"></span>
+
+                                </div>
+                            </div>
+                            <!-- pwd -->
+                            <div class="row m-t-5">
+                                <div class="col s7">
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Agree to all Terms</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                            <!-- pwd -->
+                            <div class="row m-t-40">
+                                <div class="col s12">
+                                    <button class="btn-large w100 red" type="submit">Üye Ol</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="center-align m-t-20 db">
+                        Hesabın var mı ? <a href="/Login/Index">Giriş Yap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- Login box.scss -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper scss in scafholding.scss -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper scss in scafholding.scss -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right Sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right Sidebar -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- All Required js -->
+    <!-- ============================================================== -->
+    <script src="~/Admin/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/Admin/dist/js/materialize.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugin js -->
+    <!-- ============================================================== -->
+    <script type="text/javascript">
+        $(function () {
+            $(".preloader").fadeOut();
+        });
+    </script>
+</body>
+
+</html>

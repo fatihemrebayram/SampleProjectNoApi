@@ -1,0 +1,148 @@
+﻿@using ModelsLayer.Models
+@model AdminRoleALLViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<div class="fixed-action-btn">
+    <a href="/Register" class="btn-floating btn-large modal-trigger red">
+        <i class="large material-icons">add</i>
+    </a>
+</div>
+
+<div class="page-titles">
+    <div class="d-flex align-items-center">
+        <h5 class="font-medium m-b-0">Kullanıcılar</h5>
+        <div class="custom-breadcrumb ml-auto">
+            <a href="/" class="breadcrumb">Anasayfa</a>
+            <a href="#!" class="breadcrumb">Kullanıcılar</a>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Container fluid scss in scafholding.scss -->
+<!-- ============================================================== -->
+<div class="container-fluid">
+    <div class="row el-element-overlay">
+        @foreach (var item in Model.AppUsers)
+        {
+            <div class="col m6 l3">
+                <div class="card">
+                    <div class="card-image">
+                        <div class="el-card-item">
+                            <div class="el-card-avatar el-overlay-1">
+                                <img src="@item.ImageURL" alt="user" style="text-align:center" />
+                                <div class="el-overlay">
+                                    <ul class="el-info">
+                                        <li><a class="btn-floating image-popup-vertical-fit" href="@item.ImageURL"><i class="material-icons">search</i></a></li>
+                                        <li><a class="btn-floating" href="/AdminRole/Index?username=@item.UserName"><i class="material-icons">edit</i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="el-card-content">
+                                <h5 class="m-b-0">@item.NameSurname</h5>
+                                <small>@item.UserName</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!-- Modal Stucture -->
+<div id="AddEdit" class="modal modal-fixed-footer" data-keyboard="false" data-backdrop="static">
+
+    <div class="modal-content" style="height:fit-content">
+        <div id="user-settings-form-users" class="row">
+            <form method="post" action="/AdminRole/UserSettings" enctype="multipart/form-data" class="col s12 m6">
+                <!-- First half of form -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="name" type="text" class="validate" required asp-for="@Model.UserUpdateViewModel.NameSurname" name="NameSurname">
+                        <label for="name">Adı Soyadı</label>
+                        <span style="color:darkred" asp-validation-for="@Model.UserUpdateViewModel.NameSurname"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="Username" type="text" class="validate" required asp-for="@Model.UserUpdateViewModel.Username" name="Username">
+                        <label for="Username">Kullanıcı Adı</label>
+                        <span style="color:darkred" asp-validation-for="@Model.UserUpdateViewModel.Username"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate" required asp-for="@Model.UserUpdateViewModel.Mail" name="Mail">
+                        <label for="email">E-Posta</label>
+                        <span style="color:darkred" asp-validation-for="@Model.UserUpdateViewModel.Mail"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" class="validate" asp-for="@Model.UserUpdateViewModel.password" autocomplete="off" name="password">
+                        <label for="password">Şifre</label>
+                        <span style="color:darkred" asp-validation-for="@Model.UserUpdateViewModel.password"></span>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select asp-for="@Model.UserUpdateViewModel.Department" name="Department">
+                            <option value="" disabled selected>Seçiniz</option>
+                            <option value="1">Test1</option>
+                            <option value="2">Test2</option>
+                        </select>
+                        <label>Bölüm</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="input-field">
+                            <div class="file-field input-field">
+                                <div class="btn blue darken-1">
+                                    <span>Fotoğraf</span>
+                                    <input type="file" name="ProfileImage">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" placeholder="Fotoğrafın aynı kalması için boş bırakınız">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn green waves-effect waves-green ">
+                    Güncelle
+                </button>
+                <a href="/AdminRole" class="modal-action modal-close waves-effect waves-green btn red">Kapat</a>
+
+            </form>
+            <div id="user-settings-form-roles" class="row">
+
+                <form asp-action="AssignRole" asp-controller="AdminRole" method="post">
+                    <!-- Second half of form -->
+                    @for (int i = 0; i < Model.AdminRoleAssingViews.Count; i++)
+                    {
+                        <div class="form-check">
+                            <input type="hidden" asp-for="@Model.AdminRoleAssingViews[i].RoleId" />
+                            <input type="hidden" asp-for="@Model.AdminRoleAssingViews[i].Name" />
+
+                            <label>
+                                <input type="checkbox" asp-for="@Model.AdminRoleAssingViews[i].Exists" class="form-check-input" />
+                                <span></span>
+                            </label>
+
+                            <label class="form-check-label" asp-for="@Model.AdminRoleAssingViews[i].Exists">@Model.AdminRoleAssingViews[i].Name</label>
+                        </div>
+                    }
+
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Kaydet</button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,127 @@
+﻿@using ModelsLayer.Models
+@model UserProfileCRUDViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    string department = "";
+
+}
+<style>
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+        .card-content h6 {
+            flex-grow: 1;
+            word-break: break-word;
+        }
+
+    .card-content2 h6 {
+        flex-grow: 1;
+        word-break: break-word;
+    }
+</style>
+
+<div class="page-titles">
+    <div class="d-flex align-items-center">
+        <h5 class="font-medium m-b-0">Profil</h5>
+        <div class="custom-breadcrumb ml-auto">
+            <a href="/" class="breadcrumb">Anasayfa</a>
+            <a href="/User" class="breadcrumb">Profil</a>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Container fluid scss in scafholding.scss -->
+<!-- ============================================================== -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col s4">
+            <div class="card">
+                <img class="responsive-img" src="@Model.AppUser.ImageURL" width="600" height="600" alt="Card image">
+
+                <div class="card-content2">
+                    <div class="card-img-overlay white-text social-profile d-flex justify-content-center">
+                        <div class="align-self-center">
+                            <img src="" class="circle" width="100">
+                            <h4 class="card-title white-text">@Model.AppUser.NameSurname</h4>
+                            <h6 class="card-subtitle">@Model.AppUser.UserName</h6>
+                            <p class="white-text op-5">@department</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <small>E-Posta</small>
+                    <h6>@Model.AppUser.Email</h6>
+                    <small>Kullanıcı Adı</small>
+                    <h6>@Model.AppUser.UserName</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col s8">
+            <div class="card">
+                <div class="card-content">
+                    <form method="post" action="/User/UserSettings" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="name" type="text" class="validate" required asp-for="@Model.UserUpdateViewModel.NameSurname" name="NameSurname">
+                                <label for="name">Adı Soyadı</label>
+                                <span style="color:darkred" asp-validation-for="@Model.UserUpdateViewModel.NameSurname"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="name" type="text" class="validate" required asp-for="@Model.UserUpdateViewModel.Username" name="Username">
+                                <label for="name">Kullanıcı Adı</label>
+                                <span style="color:darkred" asp-validation-for="@Model.UserUpdateViewModel.Username"></span>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="email" type="email" class="validate" required asp-for="@Model.UserUpdateViewModel.Mail" name="Mail">
+                                <label for="email">E-Posta</label>
+                                <span style="color:darkred" asp-validation-for="@Model.UserUpdateViewModel.Mail"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="password" type="password" class="validate" asp-for="@Model.UserUpdateViewModel.password" autocomplete="off" name="password">
+                                <label for="password">Şifre</label>
+                                <span style="color:darkred" asp-validation-for="@Model.UserUpdateViewModel.password"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+
+                                <div class="file-field input-field">
+                                    <div class="btn blue darken-1">
+                                        <span>Fotoğraf</span>
+                                        <input type="file" name="ProfileImage">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Fotoğrafın aynı kalması için boş bırakınız">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <button class="btn teal waves-effect waves-light" type="submit" name="action">Güncelle</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

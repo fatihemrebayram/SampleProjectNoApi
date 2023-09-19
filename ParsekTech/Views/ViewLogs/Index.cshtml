@@ -1,0 +1,111 @@
+﻿@using EntityLayer.Concrete
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Logs>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    string icon = "";
+    string color = "";
+}
+
+<div class="page-titles">
+    <div class="d-flex align-items-center">
+        <h5 class="font-medium m-b-0">Log Kayıtları</h5>
+        <div class="custom-breadcrumb ml-auto">
+            <a href="/" class="breadcrumb">Anasayfa</a>
+            <a href="#!" class="breadcrumb">Log Kayıtları</a>
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="col s2">
+                            <div class="input-field">
+                                <h5 class="card-title">Log Kayıtları</h5>
+                            </div>
+                        </div>
+                        <div class="col s2">
+                        </div>
+                        <div class="col s2">
+                        </div>
+                        <div class="col s6">
+                            <div class="row">
+                                <div class="col s4">
+                                </div>
+                                <div class="col s4 ">
+                                    <div class="input-field">
+                                    </div>
+                                </div>
+                                <div class="col s4">
+                                    @await Component.InvokeAsync("Search")
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>İçerik</th>
+                                    <th>Bilgisayar Adı</th>
+                                    <th>Site Kullanıcı Adı</th>
+                                    <th>Ip Adresi</th>
+                                    <th>Zaman</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.Level == "Information")
+                                    {
+                                        icon = "info";
+                                        color = "dodgerblue";
+                                    }
+                                    else if (item.Level == "Warning")
+                                    {
+                                        icon = "warning";
+                                        color = "orange";
+
+                                    }
+                                    else if (item.Level == "Error")
+                                    {
+                                        icon = "error";
+                                        color = "orangered";
+
+                                    }
+                                    <tr>
+                                        <td><i class="material-icons dp48" style="color:@color">@icon</i></td>
+                                        <td>@item.Message</td>
+                                        <td>@item.ComputerName</td>
+                                        <td>@item.Username</td>
+                                        <td>@item.IpAddress</td>
+                                        <td>@item.TimeStamp</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    @Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new{page}), new X.PagedList.Web.Common.PagedListRenderOptions {
+                    DisplayLinkToIndividualPages = true,
+                    DisplayItemSliceAndTotal=false,
+                    DisplayPageCountAndCurrentLocation = false,
+                    MaximumPageNumbersToDisplay = 10,
+                    LiElementClasses = new string[] { "page-item" },
+                    PageClasses = new string[] { "page-link" }
+                    })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

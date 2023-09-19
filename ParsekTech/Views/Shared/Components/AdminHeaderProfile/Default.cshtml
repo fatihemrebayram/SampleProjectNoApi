@@ -1,0 +1,31 @@
+﻿@using EntityLayer.Concrete
+@model List<AppUser>
+@foreach (var item in Model)
+{
+
+    <li>
+
+        <a class="dropdown-trigger" href="javascript: void(0);" data-target="user_dropdown"><img src="@item.ImageURL" alt="user" class="circle profile-pic" style="width:30px;height:30px"></a>
+        <ul id="user_dropdown" class="mailbox dropdown-content dropdown-user">
+            <li>
+                <div class="dw-user-box">
+                    <div class="u-img"><img src="@item.ImageURL" alt="user"></div>
+                    <div class="u-text">
+                        <h4>@item.NameSurname</h4>
+                        <p>@item.UserName</p>
+                        <a href="/User" class="waves-effect waves-light btn-small red white-text">Profili Göster</a>
+                    </div>
+                </div>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/User"><i class="material-icons">account_circle</i> Profilim</a></li>
+
+   @*         <li><a href="#"><i class="material-icons">inbox</i> Inbox</a></li>
+            <li role="separator" class="divider"></li>
+*@
+            <li role="separator" class="divider"></li>
+            <li><a href="/Login/LogOut"><i class="material-icons">power_settings_new</i> Çıkış Yap</a></li>
+        </ul>
+
+    </li>
+}
